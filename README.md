@@ -8,6 +8,14 @@
 - 参考代码：[`reference/`](reference/)（双列布局、SHA-256 校验导入、多源合并与硬过滤；`npm install && npm run typecheck` 可直接验）
 - 本仓只有机制与脱敏说明；真实图片与个人数据不在本仓（存放在私有存档仓）
 
+## 效果图 / Screenshots
+
+运行中界面的实拍（2026-11-09）；插画图面已作薄码处理，只保留版式与色调：
+
+![桌面端](docs/images/desktop.png)
+
+![移动端](docs/images/mobile.png)
+
 A sectioned masonry gallery fed by Pixiv ranking boards, with a private
 vault ("warehouse") for the owner's own illustrations. The defining
 constraint: **originals are stored and served byte-for-byte** — no
