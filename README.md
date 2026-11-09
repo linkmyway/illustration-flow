@@ -1,5 +1,13 @@
 # Illustration Flow — a personal illustration gallery with a lossless vault
 
+## 中文说明
+
+无损插画流的实现方法开源版：双列瀑布画廊 + 原图字节级无损的个人仓库。
+
+- 实现文档：[`docs/IMPLEMENTATION.md`](docs/IMPLEMENTATION.md)（双列确定性分发、无损仓库与哈希校验导入、多源过滤推荐流、分区高亮）
+- 参考代码：[`reference/`](reference/)（双列布局、SHA-256 校验导入、多源合并与硬过滤；`npm install && npm run typecheck` 可直接验）
+- 本仓只有机制与脱敏说明；真实图片与个人数据不在本仓（存放在私有存档仓）
+
 A sectioned masonry gallery fed by Pixiv ranking boards, with a private
 vault ("warehouse") for the owner's own illustrations. The defining
 constraint: **originals are stored and served byte-for-byte** — no
