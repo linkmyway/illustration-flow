@@ -37,3 +37,10 @@ See [`docs/IMPLEMENTATION.md`](docs/IMPLEMENTATION.md) for:
 - the top-bar rules: fixed-size controls, no counters in the bar, and
   scroll-position-based section highlighting instead of frame
   callbacks.
+
+## Reference code
+
+The [`reference/`](reference/) folder contains a reference
+implementation of the core mechanisms, written from the documented
+method (the production app runs on a hosted platform whose source is
+not exportable).
