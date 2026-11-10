@@ -23,9 +23,9 @@ contains gallery content.
 
 ## What it does
 
-- Sections: curator picks → weekly chart → daily chart → an opt-in
-  adult zone (fully hidden when off, including in favorites) →
-  favorites as their own page.
+- Sections: curator picks → weekly chart → daily chart → an
+  adult zone (always shown; its visibility toggle was removed in
+  2026-11) → favorites as their own page.
 - Warehouse: upload or collect any gallery work into the vault with
   the same treatment as uploads — view, per-image download, ZIP pack,
   dedupe on re-add.
