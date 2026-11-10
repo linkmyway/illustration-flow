@@ -18,7 +18,14 @@ export interface GalleryItem {
 }
 
 /** Split items into `columns` ordered columns, balancing total
- *  rendered height. Input order is preserved within each column. */
+ *  rendered height. Input order is preserved within each column.
+ *
+ * @example
+ * distribute([{ id: 1, width: 100, height: 200 },
+ *             { id: 2, width: 100, height: 100 },
+ *             { id: 3, width: 100, height: 100 }], 2)
+ * // → [[item1], [item2, item3]] — heights 2.0 vs 1.0+1.0, balanced.
+ */
 export function distribute<T extends GalleryItem>(items: T[], columns = 2): T[][] {
   const cols: T[][] = Array.from({ length: columns }, () => []);
   const heights = new Array(columns).fill(0);

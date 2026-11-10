@@ -46,13 +46,25 @@ export const PROXY_RULES: Record<FeedPost["source"], { referer: string; allowedH
   "yande.re": { referer: "https://yande.re/", allowedHosts: ["files.yande.re", "assets.yande.re"] },
 };
 
+/** @example
+ * passesHardFilter({ rating: "explicit", isStaticImage: true, tags: ["femdom"], … })
+ * // → true
+ * passesHardFilter({ rating: "explicit", isStaticImage: true, tags: ["shota"], … })
+ * // → false — one excluded tag kills the post, whatever else matches.
+ */
 export function passesHardFilter(p: FeedPost): boolean {
   if (!p.isStaticImage) return false;
   if (p.rating === "safe") return false;
   return !p.tags.some((t) => EXCLUDED_TAGS.has(t));
 }
 
-/** Merge the three source pools for the owner's enabled tags. */
+/** Merge the three source pools for the owner's enabled tags.
+ *
+ * @example
+ * mergeFeed([nozomiPool, xbooruPool, yandePool], new Set(["demon_girl", "tail"]))
+ * // → hard-filtered posts carrying ≥1 enabled tag, deduped by md5
+ * //   (booru sources) or source:dataid (nozomi), first occurrence wins.
+ */
 export function mergeFeed(
   pools: FeedPost[][],
   enabledTags: Set<string>,
@@ -87,6 +99,12 @@ export interface ChartEntry {
   rank: number;
 }
 
+/** @example
+ * selectChart([{ pixivId: 1, type: "illust", pageCount: 1, isAd: false, rank: 2 },
+ *              { pixivId: 2, type: "illust", pageCount: 4, isAd: false, rank: 1 }])
+ * // → only pixivId 1 survives (multi-page works and ads are dropped),
+ * //   in rank order.
+ */
 export function selectChart(entries: ChartEntry[]): ChartEntry[] {
   return entries
     .filter((e) => !e.isAd && e.type === "illust" && e.pageCount === 1)
