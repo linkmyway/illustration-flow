@@ -262,3 +262,10 @@ section governs.
 - Edges: the taste model uses only signals the owner personally
   gave (hearts, verdicts, the verified-artist table) — no inferred
   profiling.
+
+## Sync note (2026-11-12, covering the 2026-11-11 Space changes)
+
+- **Hero priority gate + preload scheduler**: on cold start the champion banner owns the network alone — until it loads or errors (2.5 s fallback), the global image scheduler releases nothing and grid images hold their src with a shimmer placeholder. Afterwards the preload band reaches 2 viewports ahead, the scheduler caps concurrency at 5 grants ordered by distance to the viewport, and far-scrolled preloads are cancelled. A tail-card truncation in long sections was fixed by near-exact height estimation after the footer settles, skipping content-visibility for the last two cards of each column and sizing the container to the longer column.
+- **Preview tiers completed**: bundled curated picks previously had no preview tier and served originals directly; they now get build-time display previews (≤1080×1600 JPEG q82), and grid previews use the 600 px WebP tier. Original-byte paths (final reader display, download, add-to-warehouse, archive export) are untouched and still byte-identical.
+- **Card slimming**: one meta row under each image (truncated title + artist/source caption); tag and button rows removed; the heart became a 28 px overlay badge with a 36 px transparent hit area; download and add-to-warehouse moved into the reader; warehouse packing became an on-image pill. The weekly section's filter/sort row was removed — it always renders in fused chart order. Section subtitles were cut to "source + date" phrases.
+- **Recommendation exclusions extended**: the auto-recommendation feed now hard-excludes three additional categories by native tags across all sources (same-sex pairing categories, full-anthro furry — animal ears / kemonomimi explicitly NOT excluded — and futanari variants). The manual daily picks follow the same rule; the user's own favourites and warehouse stay unfiltered.
